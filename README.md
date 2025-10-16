@@ -37,7 +37,10 @@ this is the 15days workshop conducted by the collage representative with the gli
 ├── assignments/
 │   ├── assignment1.js
 │   ├── assignment2.js
-│   └── ...
+├── resume/
+│    ├── index.html
+│    ├── style.html
+│    ├── script.js
 ├── todo-app/
 │   ├── index.html
 │   ├── style.css
