@@ -1,10 +1,3 @@
-import React from "react";
-function Footer() {
-  return (
-    <footer className="footer">
-      <p>© {new Date().getFullYear()} My WebApp. All Rights Reserved.</p>
-    </footer>
-  );
-}
 
-export default Footer;
+import React from "react";
+export default function Footer(){ return (<footer className="footer"><p>© {new Date().getFullYear()} My WebApp. All Rights Reserved.</p></footer>); }
