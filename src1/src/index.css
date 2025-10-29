@@ -1,0 +1,5 @@
+
+html, body, #root { height: 100%; }
+body { margin: 0; font-family: 'Poppins', sans-serif; background: linear-gradient(180deg,#0f0f16 0%, #071226 100%); color:#e6eef8; }
+body.dark-mode { background: linear-gradient(180deg,#05050a 0%, #071226 100%); color:#e6eef8; }
+a { color: inherit; text-decoration: none; }
