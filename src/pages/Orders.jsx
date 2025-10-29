@@ -1,0 +1,3 @@
+
+import React, { useEffect, useState } from "react";
+export default function Orders(){ const [orders, setOrders] = useState([]); useEffect(() => { setOrders(JSON.parse(localStorage.getItem('orders') || '[]')); }, []); return (<div className="orders-page neon-page"><h2>Your Orders</h2>{orders.length === 0 ? <p>No orders found</p> : (<div className="orders-list">{orders.map((order, idx) => (<div className="order-box" key={idx}><h4>Order #{idx+1}</h4>{order.map(item => (<div key={item.id} className="order-item"><span>{item.title}</span><span>Qty: {item.quantity}</span><span>₹{item.price}</span></div>))}</div>))}</div>)}</div>); }

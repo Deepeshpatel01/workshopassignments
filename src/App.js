@@ -1,34 +1,35 @@
+
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { useState } from 'react';
-
-import Header from './components/Header.jsx';
-import Footer from './components/Footer.jsx';
-
-import Home from './pages/home.jsx';
-import About from './pages/about.jsx';
-import Contact from './pages/contact.jsx';
-import ProductDetail from './pages/productDetails.jsx';
-import Cart from './pages/cart.jsx';
-
-function App() {
-  const [cart, setCart] = useState([]);
-
+import MainLayout from './layout/MainLayout';
+import { UserProvider } from './context/UserContext';
+import { CartProvider } from './context/CartContext';
+import ProtectedRoute from './components/ProtectedRoute';
+import Home from './pages/Home';
+import Contact from './pages/Contact';
+import Login from './pages/Login';
+import Cart from './pages/Cart';
+import Checkout from './pages/Checkout';
+import Orders from './pages/Orders';
+import ProductDetail from './pages/ProductDetail';
+export default function App(){
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Header cart={cart} />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/cart" element={<Cart cart={cart} setCart={setCart} />} />
-          <Route path="/product/:id" element={<ProductDetail cart={cart} setCart={setCart} />} />
-        </Routes>
-        <Footer />
-      </BrowserRouter>
-    </div>
+    <UserProvider>
+      <CartProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route element={<MainLayout />}>
+              <Route path="/" element={<Home />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/product/:id" element={<ProductDetail />} />
+              <Route path="/cart" element={<ProtectedRoute><Cart /></ProtectedRoute>} />
+              <Route path="/checkout" element={<ProtectedRoute><Checkout /></ProtectedRoute>} />
+              <Route path="/orders" element={<ProtectedRoute><Orders /></ProtectedRoute>} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </CartProvider>
+    </UserProvider>
   );
 }
-
-export default App;
